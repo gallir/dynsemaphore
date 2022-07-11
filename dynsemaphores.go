@@ -40,6 +40,14 @@ func (d *DynSemaphore) Release() {
 	d.cond.Signal()
 }
 
+func (d *DynSemaphore) GetN() int {
+	return d.n
+}
+
+func (d *DynSemaphore) GetConcurrency() int {
+	return d.MaxConcurrency
+}
+
 func (d *DynSemaphore) SetConcurrency(c int) {
 	d.mu.Lock()
 	defer d.mu.Unlock()
